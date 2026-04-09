@@ -1,1 +1,3 @@
 Error: DB connection failed
+Error: Timeout
+ERROR:authentication failed
