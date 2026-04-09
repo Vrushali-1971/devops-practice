@@ -1,0 +1,20 @@
+name: Log Analyzer CI
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  log-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Make script executable
+        run: chmod +x scripting/container_log_analyzer.sh
+   
+      - name: Run script
+        run: ./scripting/container_log_analyzer.sh error-test2 2
