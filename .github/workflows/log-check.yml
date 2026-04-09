@@ -3,7 +3,7 @@ name: Log Analyzer CI
 on: 
   push:
     branches:
-      - main
+      - master
 
 jobs:
   log-check:
