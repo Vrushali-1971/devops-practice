@@ -1,0 +1,12 @@
+# Logs
+*.log
+
+# Temp files
+*.txt
+
+# Random scripting files
+scripting/2
+scripting/=
+
+# OS files
+.DS_Store
