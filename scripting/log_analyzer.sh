@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Accept directory as argument, default to "logs"
-DIR="$(1:-logs)"
+DIR="${1:-logs}"
 
 # Initialize variables
 total=0
