@@ -23,13 +23,4 @@ jobs:
         run: chmod +x scripting/log_analyzer.sh
 
       - name: Run log analyzer
-        run: |
-          ERRORS=$(grep -i "error" logs/*.log | wc -l)
-          echo "Total errors: $ERRORS"
-               
-          if [ "$ERRORS" -gt 1 ]; then
-             echo "Too many errors! Failing..."
-             exit 1
-             else
-                echo "All good"
-                fi
+        run: ./scripting/log_analyzer.sh logs
