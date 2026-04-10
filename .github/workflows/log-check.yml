@@ -13,8 +13,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Create sample logs
+        run: |
+          mkdir -p logs
+          echo "error: something failed" > logs/app.log
+          echo "warning: something minor" >> logs/app.log
+          echo "error: another failure" >> logs/app.log
+
       - name: Make script executable
-        run: chmod +x scripting/container_log_analyzer.sh
-   
-      - name: Run script
-        run: echo "Workflow running successfully"
+        run: chmod +x scripting/log_analyzer.sh
+
+      - name: Run log analyzer
+        run: |
+          ERRORS=$(grep -i "error" logs/*.log | wc -l)
+          echo "Total errors: $ERRORS"
+               
+          if [ "$ERRORS" -gt 1 ]; then
+             echo "Too many errors! Failing..."
+             exit 1
+             else
+                echo "All good"
+                fi
