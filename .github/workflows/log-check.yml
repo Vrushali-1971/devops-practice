@@ -16,9 +16,8 @@ jobs:
       - name: Create sample logs
         run: |
           mkdir -p logs
-          echo "error: something failed" > logs/app.log
+          echo "info: app started" > logs/app.log
           echo "warning: something minor" >> logs/app.log
-          echo "error: another failure" >> logs/app.log
 
       - name: Make script executable
         run: chmod +x scripting/log_analyzer.sh
