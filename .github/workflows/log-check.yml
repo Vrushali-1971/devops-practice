@@ -13,11 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create sample logs
+      - name: Run Docker container and collect logs
         run: |
           mkdir -p logs
-          echo "info: app started" > logs/app.log
-          echo "warning: something minor" >> logs/app.log
+          
+          docker run -d --name test-container nginx
+          sleep 5
+          docker logs test-container > logs/app.log 2>&1
+
+      - name: Cleanup container
+        run: docker rm -f test-container
 
       - name: Make script executable
         run: chmod +x scripting/log_analyzer.sh
