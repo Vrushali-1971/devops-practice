@@ -29,3 +29,12 @@ jobs:
 
       - name: Run log analyzer
         run: ./scripting/log_analyzer.sh logs > result.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with: 
+          name: Result
+          path: |
+            logs/app.log
+            result.txt}
+
