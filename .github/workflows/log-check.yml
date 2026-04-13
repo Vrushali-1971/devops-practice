@@ -28,4 +28,4 @@ jobs:
         run: chmod +x scripting/log_analyzer.sh
 
       - name: Run log analyzer
-        run: ./scripting/log_analyzer.sh logs
+        run: ./scripting/log_analyzer.sh logs > result.txt
