@@ -31,7 +31,7 @@ jobs:
         run: ./scripting/log_analyzer.sh logs > result.txt
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with: 
           name: Result
           path: |
