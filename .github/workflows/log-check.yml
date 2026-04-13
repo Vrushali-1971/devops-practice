@@ -36,5 +36,5 @@ jobs:
           name: Result
           path: |
             logs/app.log
-            result.txt}
+            result.txt
 
