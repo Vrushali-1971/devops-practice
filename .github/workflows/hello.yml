@@ -31,3 +31,15 @@ jobs:
 
       - name: Print the runner's operating system
         run: echo "The operating system is ${{ runner.os }}"
+
+      - name: Simulated Production Compilation
+        run: |
+          echo "Compiling application layers..."
+          echo "❌ CRITICAL ERROR: Database driver connection timed out!"
+          exit 1  # This forces the pipeline to instantly crash here
+
+      - name: Emergency Alert Notification Handling
+        if: failure()  # This step ONLY runs if a previous step returned a non-zero exit code!
+        run: |
+          echo "🚨 [ALERT SYSTEM] Production build failed on branch: ${{ github.ref_name }}"
+          echo "⚠️ Automated notifications dispatched to the DevOps on-call team."
