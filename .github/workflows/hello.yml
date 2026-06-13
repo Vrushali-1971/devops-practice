@@ -1,4 +1,4 @@
-Name: Hello workflow
+name: Hello workflow
 
 on:
   workflow_dispatch:
@@ -17,10 +17,10 @@ jobs:
 
       - name: Current date and time
         run: |
-          echo "Now=$(date + '%Y-%M-%dT%H:%M:%S')" >> $GITHUB_ENV
+          echo "CURRENT_TIME=$(date +'%Y-%M-%dT%H:%M:%S')" >> $GITHUB_ENV
 
       - name: Print date
-        run: echo ${{ env.NOW }}
+        run: echo ${{ env.CURRENT_TIME }}
 
       - name: Print name of the Branch
         run: |
