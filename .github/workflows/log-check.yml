@@ -28,13 +28,27 @@ jobs:
         run: chmod +x scripting/log_analyzer.sh
 
       - name: Run log analyzer
-        run: ./scripting/log_analyzer.sh logs > result.txt
+        run: | 
+          set +e
+          ./scripting/log_analyzer.sh logs > result.txt
+          exit_stat=$?
+          echo "Exit status: $exit_stat" >> result.txt
+          set -e
+          exit $exit_stat
 
+       
+      - name: Show total errors
+        if: always()
+        run: echo "Total errors from script: $TOTAL_ERRORS"
+
+     
       - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with: 
           name: Result
           path: |
-            logs/app.log
+            logs/
             result.txt
-
+      
+            
