@@ -1,0 +1,33 @@
+Name: Hello workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+        
+      - name: Say Hello
+        run: echo "Hello from Github Actions!"
+
+      - name: Current date and time
+        run: |
+          echo "Now=$(date + '%Y-%M-%dT%H:%M:%S')" >> $GITHUB_ENV
+          
+      - name: Print date
+        run: echo ${{ env.NOW }}
+
+      - name: Print name of the Branch 
+        run: |
+          echo "The current brach is ${{ github.ref_name }}"
+
+      - name: List the files
+        run: ls -R
+
+      - name: Print the runner's operating system
+        run: echo "The operating system is ${{ runner.os }}"
