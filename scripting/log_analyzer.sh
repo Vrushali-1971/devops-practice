@@ -46,22 +46,37 @@ for file in "$DIR"/*.log; do
 done 
 
 # Print total
+echo "==== LOG ANALYSIS RESULT ===="
 echo "Total errors: $total"
-
-if [ "$total" -ge 1 ]; then
-    echo "Too many errors! Failing..."
-    exit 1
-else
-	echo "All good"
-fi
 
 if [ -z "$max1_file" ]; then
 	echo "No errors found in any file"
-	exit 0
+else
+	# Print top files
+echo "Top 1: $(basename "$max1_file") ($max1_errors errors)"
+
 fi
 
-# Print top files
-echo "Top 1: $(basename "$max1_file") ($max1_errors errors)"
-echo "Top 2: $(basename "$max2_file") ($max2_errors errors)"
+if [ -z "$max2_file" ]; then 
+	echo "Only one file has errors"
+else 
+	echo "Top 2: $(basename "$max2_file") ($max2_errors errors)"
+fi
+
+echo "TOTAL_ERRORS=$total" >> $GITHUB_ENV
 
 
+# condition
+
+if [ "$total" -eq 0 ]; then
+        echo "Status: PASSED (no errors)"
+        exit 0
+elif [ "$total" -le 5 ]; then
+        echo "Status: WARINING (pipeline passed with issues)"
+        exit 0
+else
+        echo "Status: FAILED (too many errors)"
+        exit 1
+fi
+
+# git practice
