@@ -1,4 +1,5 @@
 #!/bin/bash
+# Git diff practice
 
 #Accept directory as argument, default to "logs"
 DIR="${1:-logs}"
@@ -80,3 +81,4 @@ else
 fi
 
 # git practice
+# Scenario 1
