@@ -25,3 +25,4 @@ A: add = stage; commit = save to history
 
 ## Debug
 Changes not showing in status → file might be ignored or untracked in wrong folder
+new line
