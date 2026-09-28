@@ -5,7 +5,6 @@ on:
     branches: [ master ]
   workflow_dispatch:      # allows manual trigger from GitHub UI
 
-
 jobs:
   greet:
     runs-on: ubuntu-latest
@@ -21,5 +20,3 @@ jobs:
           echo "OS: $(uname -a)"
           echo "User: $(whoami)"
           echo "Working dir: $(pwd)"
-
-
