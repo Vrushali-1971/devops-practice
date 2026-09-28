@@ -1,0 +1,22 @@
+name: Hello World Workflow
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:      # allows manual trigger from GitHub UI
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show current date
+        run: date
+
+      - name: Show runner info
+        run: |
+          echo "OS: $(uname -a)"
+          echo "User: $(whoami)"
+          echo "Working dir: $(pwd)"
