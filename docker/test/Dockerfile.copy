@@ -1,0 +1,4 @@
+FROM alpine
+WORKDIR /app
+COPY archive.tar.gz .
+RUN ls -la 
